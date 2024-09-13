@@ -18,9 +18,20 @@ class Program
                 case MenuHelpers.Quit:
                     isAlive = false;
                     break;
-                case MenuHelpers.EvaluatePrice:
+                case MenuHelpers.CalculatePriceForOne:
                     Person p = new Person(Util.AskForUInt("age"));
-                    PrintPrice(p);
+                    PrintPriceForOne(p);
+                    break;
+                case MenuHelpers.CalculatePriceForGroup:
+                    uint peopleCount = Util.AskForUInt("number of people");
+                    Person[] group = new Person[peopleCount];
+                    for (int i = 0; i < group.Length; i++)
+                    {
+                        uint age = Util.AskForUInt($"Person #{i + 1} age");
+                        group[i] = new Person(age);
+                    }
+
+                    PrintGroupSummary(group);
                     break;
                 default:
                     Console.Clear();
@@ -30,7 +41,19 @@ class Program
         } while (isAlive);
     }
 
-    private static void PrintPrice(Person p)
+    private static void PrintGroupSummary(Person[] group)
+    {
+        decimal totalPrice = 0;
+        foreach (Person p in group)
+        {
+            totalPrice += p.GetPrice();
+        }
+
+        Console.WriteLine($"Antal personer i sällskapet: {group.Length}");
+        Console.WriteLine($"och den totala kostnaden blir: {totalPrice}");
+    }
+
+    private static void PrintPriceForOne(Person p)
     {
         Console.WriteLine(p.AgeGroup switch
         {
