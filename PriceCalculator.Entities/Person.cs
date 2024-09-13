@@ -11,8 +11,10 @@ public class Person
 
     public AgeGroup AgeGroup => Age switch
     {
-        < 20 => AgeGroup.Youth,
+        > 100 => AgeGroup.HundredPlus,
         > 64 => AgeGroup.Pensioner,
+        < 5 => AgeGroup.Infant,
+        < 20 => AgeGroup.Youth,
         _ => AgeGroup.Adult
     };
 
@@ -23,6 +25,7 @@ public class Person
             AgeGroup.Youth => 80,
             AgeGroup.Pensioner => 90,
             AgeGroup.Adult => 120,
+            AgeGroup.Infant or AgeGroup.HundredPlus => 0,
             _ => 120
         };
     }
