@@ -1,13 +1,13 @@
 namespace PriceCalculator.Helpers;
 
-public static class MenuHelpers
+public static class MenuHelper
 {
     public const string Quit = "0";
     public const string CalculatePriceForOne = "1";
     public const string CalculatePriceForGroup = "2";
     public const string LoopWord = "3";
 
-    public static void Print()
+    public static void PrintMenu()
     {
         Console.WriteLine("Welcome to Price Calculator!" +
                           "\nNavigate through the different options with the corresponding numbers" +

@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\PriceCalculator.Entities\PriceCalculator.Entities.csproj" />
-    </ItemGroup>
-
 </Project>

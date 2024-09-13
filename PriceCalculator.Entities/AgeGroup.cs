@@ -1,4 +1,4 @@
-namespace PriceCalculator;
+namespace PriceCalculator.Entities;
 
 public enum AgeGroup
 {

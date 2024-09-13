@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using PriceCalculator.Entities;
 using PriceCalculator.Helpers;
 
 namespace PriceCalculator;
@@ -10,19 +10,19 @@ class Program
         bool isAlive = true;
         do
         {
-            MenuHelpers.Print();
+            MenuHelper.PrintMenu();
             string choice = Console.ReadLine().ToLower();
 
             switch (choice)
             {
-                case MenuHelpers.Quit:
+                case MenuHelper.Quit:
                     isAlive = false;
                     break;
-                case MenuHelpers.CalculatePriceForOne:
+                case MenuHelper.CalculatePriceForOne:
                     Person p = new Person(Util.AskForUInt("age"));
-                    PrintPriceForOne(p);
+                    OutputHelper.PrintPriceForOne(p);
                     break;
-                case MenuHelpers.CalculatePriceForGroup:
+                case MenuHelper.CalculatePriceForGroup:
                     uint peopleCount = Util.AskForUInt("number of people");
                     Person[] group = new Person[peopleCount];
                     for (int i = 0; i < group.Length; i++)
@@ -31,11 +31,11 @@ class Program
                         group[i] = new Person(age);
                     }
 
-                    PrintGroupSummary(group);
+                    OutputHelper.PrintGroupSummary(group);
                     break;
-                case MenuHelpers.LoopWord:
+                case MenuHelper.LoopWord:
                     string chosenWord = Util.AskForString("word");
-                    LoopAWord(chosenWord, 10);
+                    OutputHelper.PrintWordXTimes(chosenWord, 10);
                     break;
 
                 default:
@@ -44,37 +44,5 @@ class Program
                     break;
             }
         } while (isAlive);
-    }
-
-    private static void PrintGroupSummary(Person[] group)
-    {
-        decimal totalPrice = 0;
-        foreach (Person p in group)
-        {
-            totalPrice += p.GetPrice();
-        }
-
-        Console.WriteLine($"Antal personer i sällskapet: {group.Length}");
-        Console.WriteLine($"och den totala kostnaden blir: {totalPrice}");
-    }
-
-    private static void PrintPriceForOne(Person p)
-    {
-        Console.WriteLine(p.AgeGroup switch
-        {
-            AgeGroup.Youth => $"Ungdomspris: {p.GetPrice()}",
-            AgeGroup.Pensioner => $"Pensionärspris: {p.GetPrice()}",
-            AgeGroup.Adult => $"Standardpris: {p.GetPrice()}"
-        });
-    }
-
-    private static void LoopAWord(string word, uint count)
-    {
-        for (int i = 1; i <= count; i++)
-        {
-            Console.Write($"{i}.{word}");
-            if (i != count) Console.Write(", ");
-            else Console.WriteLine();
-        }
     }
 }
