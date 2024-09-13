@@ -15,7 +15,7 @@ public static class Util
 
             Console.WriteLine($"Please enter a valid {prompt}");
         }
-    }   
+    }
 
     public static uint AskForUInt(string prompt)
     {
@@ -31,4 +31,29 @@ public static class Util
             Console.WriteLine($"Please enter a valid {prompt}");
         }
     }
+
+    public static string FindWordInSentence(uint minimumWordCount, uint desiredWordPosition)
+    {
+        if (desiredWordPosition < 1 || minimumWordCount < desiredWordPosition)
+        {
+            throw new ArgumentOutOfRangeException(nameof(desiredWordPosition), 
+                $"The desired word position must be between 1 and {minimumWordCount}.");
+        }
+
+        while (true)
+        {
+            string input = AskForString($"sentence of at least {minimumWordCount} words");
+            string[] enteredWords = input.Split(' ');
+
+            if (enteredWords.Length < minimumWordCount)
+            {
+                Console.WriteLine("You entered too few words for this sentence.");
+            }
+            else
+            {
+                return enteredWords[desiredWordPosition - 1];
+            }
+        }
+    }
+
 }

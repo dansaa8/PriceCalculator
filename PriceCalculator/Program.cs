@@ -37,6 +37,12 @@ class Program
                     string chosenWord = Util.AskForString("word");
                     OutputHelper.PrintWordXTimes(chosenWord, 10);
                     break;
+                case MenuHelper.GrabThirdWord:
+                    uint wordPosition = 3;
+                    uint minAmountOfWords = 3;
+                    string extractedWord = Util.FindWordInSentence(minAmountOfWords, wordPosition);
+                    Console.WriteLine($"Word number {wordPosition} in the entered sentence is \'{extractedWord}\'.");
+                    break;
 
                 default:
                     Console.Clear();

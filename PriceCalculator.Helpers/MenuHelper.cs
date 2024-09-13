@@ -6,6 +6,7 @@ public static class MenuHelper
     public const string CalculatePriceForOne = "1";
     public const string CalculatePriceForGroup = "2";
     public const string LoopWord = "3";
+    public const string GrabThirdWord = "4";
 
     public static void PrintMenu()
     {
@@ -14,6 +15,7 @@ public static class MenuHelper
                           $"\n{Quit}: Quit" +
                           $"\n{CalculatePriceForOne}: Calculate price for one person" +
                           $"\n{CalculatePriceForGroup}: Calculate price for a group of persons" +
-                          $"\n{LoopWord}: Loop a word 10 times!");
+                          $"\n{LoopWord}: Loop a word 10 times!" +
+                          $"\n{GrabThirdWord}: Enter a sentence of at least 3 words separated by space");
     }
 }
