@@ -33,6 +33,11 @@ class Program
 
                     PrintGroupSummary(group);
                     break;
+                case MenuHelpers.LoopWord:
+                    string chosenWord = Util.AskForString("word");
+                    LoopAWord(chosenWord, 10);
+                    break;
+
                 default:
                     Console.Clear();
                     Console.WriteLine("Invalid choice, please try again.\n");
@@ -61,5 +66,15 @@ class Program
             AgeGroup.Pensioner => $"Pensionärspris: {p.GetPrice()}",
             AgeGroup.Adult => $"Standardpris: {p.GetPrice()}"
         });
+    }
+
+    private static void LoopAWord(string word, uint count)
+    {
+        for (int i = 1; i <= count; i++)
+        {
+            Console.Write($"{i}.{word}");
+            if (i != count) Console.Write(", ");
+            else Console.WriteLine();
+        }
     }
 }

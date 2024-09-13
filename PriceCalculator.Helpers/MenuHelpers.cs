@@ -5,6 +5,7 @@ public static class MenuHelpers
     public const string Quit = "0";
     public const string CalculatePriceForOne = "1";
     public const string CalculatePriceForGroup = "2";
+    public const string LoopWord = "3";
 
     public static void Print()
     {
@@ -12,6 +13,7 @@ public static class MenuHelpers
                           "\nNavigate through the different options with the corresponding numbers" +
                           $"\n{Quit}: Quit" +
                           $"\n{CalculatePriceForOne}: Calculate price for one person" +
-                          $"\n{CalculatePriceForGroup}: Calculate price for a group of persons");
+                          $"\n{CalculatePriceForGroup}: Calculate price for a group of persons" +
+                          $"\n{LoopWord}: Loop a word 10 times!");
     }
 }
