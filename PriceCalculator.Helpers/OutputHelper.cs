@@ -20,9 +20,11 @@ public static class OutputHelper
     {
         Console.WriteLine(p.AgeGroup switch
         {
+            AgeGroup.Infant => $"Litet barn: {p.GetPrice()}",
             AgeGroup.Youth => $"Ungdomspris: {p.GetPrice()}",
             AgeGroup.Pensioner => $"Pensionärspris: {p.GetPrice()}",
-            AgeGroup.Adult => $"Standardpris: {p.GetPrice()}"
+            AgeGroup.Adult => $"Standardpris: {p.GetPrice()}",
+            AgeGroup.HundredPlus => $"Hundra plus: {p.GetPrice()}"
         });
     }
 
